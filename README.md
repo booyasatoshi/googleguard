@@ -344,6 +344,6 @@ This extension is provided for educational and privacy protection purposes. User
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under GNU General Public License v3.0 - see the LICENSE file for details.
 
 *"Privacy is not an option, and it shouldn't be the price we accept for just getting on the Internet." - Gary Kovacs*
