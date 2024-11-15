@@ -18,7 +18,7 @@
    - [Behavioral Data Poisoning](#behavioral-data-poisoning)
    - [Request Sanitization And Header Protection](#request-sanitization-and-header-protection)
    - [The DOM Mutation Observer And Attribute Cleaner](#the-dom-mutation-observer-and-attribute-cleaner)
-5. [Installation](#installation)
+5. [How To Install The Extension](#how-to-install-the-extension)
 6. [Configuration](#configuration)
 7. [Technical Architecture](#technical-architecture)
 8. [Privacy Considerations](#privacy-considerations)
@@ -29,6 +29,8 @@
 Before you read anything else, the first advice I would give you is, stop using Google Chrome.  Now. Download and use [Ungoogled Chromium](https://ungoogled-software.github.io/ungoogled-chromium-binaries/) or [Brave Browser](https://brave.com/download/). Brave does not implement all the countermeasures used by this extension, however it's still way better than Chrome.  
 
 But if you have to use Chrome, read on and install the extension.
+
+If you see bugs, or want to help improve or contribute to this project, fork it and submit prs please.
 
 ## What this is
 This sophisticated Google Chrome extension actively counters Google's abuse of search result pages, and the Orwellian and pervasive tracking and surveillance mechanisms through novel exploitation of the DOM features and use them to clean abusive attributes like ping and mousedown; it also uses fingerprint poisoning and behavioral data injection techniques. In its current form, the extension only addresses Google search result pages or URLs in conjunction with other Google tracking URLs.  I am hoping to expand functionality as time allows.
@@ -241,6 +243,7 @@ The extension combines declarative rules for known tracking endpoints with dynam
 
 ## The DOM Mutation Observer And Attribute Cleaner
 The DOM protection layer represents another crucial innovation. Instead of attempting to block html pings using anchor tags using the network layer - which Chrome now prevents extensions from doing - the extension implements an aggressive DOM sanitization system. A sophisticated MutationObserver is established that watches for any changes to the document. The moment any new element is added to the DOM, or any existing element is modified, the observer immediately inspects and sanitizes it, removing ping attributes and other tracking mechanisms before they can be activated. This approach is particularly effective because it prevents the ping mechanism from ever being properly established, rather than trying to block it after the fact.
+
 Google embeds tracking attributes throughout the DOM to monitor user interactions. GoogleGuard actively cleanses these attributes while preserving page functionality:
 
 ```javascript
@@ -265,9 +268,9 @@ function cleanNode(node) {
 }
 ```
 
-A mutation observer continuously monitors for new elements and dynamically removes tracking attributes, ensuring protection even against dynamically injected tracking code.
+The mutation observer continuously monitors for new elements and dynamically removes tracking attributes listed in trackingAttrs, ensuring protection even against dynamically injected tracking code.
 
-## Installation
+## How To Install The Extension
 Google does not allow this extension to be listed in the Google Chrome Webstore so you have to install it manually as an "unpacked extension.  Please follow the steps below:
 
 1. Clone the repository or download the googleguard.zip file
