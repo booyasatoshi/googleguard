@@ -1,0 +1,62 @@
+{
+  "manifest_version": 3,
+  "name": "GoogleGuard - Don't Be Evil",
+  "version": "2.0",
+  "description": "In-browser privacy proxy that sanitizes and poisons Google tracking while protecting user privacy",
+  "permissions": [
+    "scripting",
+    "tabs",
+    "activeTab",
+    "storage",
+    "declarativeNetRequest",
+    "declarativeNetRequestFeedback" 
+  ],
+  "host_permissions": [
+    "*://*.google.com/*",
+    "*://*.googleadservices.com/*",
+    "*://*.googleapis.com/*"
+  ],
+  "background": {
+    "service_worker": "background/proxy_worker.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.google.com/*"],
+      "js": ["content/content.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "content/interceptStorageAPIs.js",
+        "content/interceptNavigatorAPIs.js",
+        "content/injectProtectionScript.js"
+      ],
+      "matches": ["*://*.google.com/*"]
+    }
+  ],
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "ruleset_1",
+        "enabled": true,
+        "path": "rules/rules.json"
+      }
+    ]
+  }
+}
