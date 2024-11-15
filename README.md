@@ -26,12 +26,12 @@
 10. [License](#license)
 
 ## Introduction
-Before you read anything else, the first advice I would give you is, stop using Google Chrome.  Now. Download and use [Ungoogled Chromium](https://ungoogled-software.github.io/ungoogled-chromium-binaries/) or [Brave Browser](https://brave.com/download/). Brave does not implement all the countermeasures used in by this extension but it's still way better than Chrome.  
+Before you read anything else, the first advice I would give you is, stop using Google Chrome.  Now. Download and use [Ungoogled Chromium](https://ungoogled-software.github.io/ungoogled-chromium-binaries/) or [Brave Browser](https://brave.com/download/). Brave does not implement all the countermeasures used by this extension, however it's still way better than Chrome.  
 
 But if you have to use Chrome, read on and install the extension.
 
 ## What this is
-This sophisticated Google Chrome extension actively counters Google's abuse of search result pages, and the Orwellian and pervasive tracking and surveillance mechanisms through novel exploitation of the DOM features and use them to clean abbusive attributes; it also uses fingerprint poisoning and behavioral data injection techniques. In its current form, the extension only addresses Google search result pages or URLs in conjunction with other Google tracking URLs.  I am hoping to expand functionality as time allows.
+This sophisticated Google Chrome extension actively counters Google's abuse of search result pages, and the Orwellian and pervasive tracking and surveillance mechanisms through novel exploitation of the DOM features and use them to clean abusive attributes like ping and mousedown; it also uses fingerprint poisoning and behavioral data injection techniques. In its current form, the extension only addresses Google search result pages or URLs in conjunction with other Google tracking URLs.  I am hoping to expand functionality as time allows.
 
 There are many Chrome extensions attempting to protect users privacy but most of them focus on blocking trackers and not pursuing more advanced ways to block surveillance due to the fact that Google will simply not list them in the extension store. GoogleGuard takes an offensive approach by implementing a combination of advanced countermeasures to block tracking attempts and also actively poisoning tracking data to render it useless for profiling.
 
