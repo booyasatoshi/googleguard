@@ -127,7 +127,7 @@ The most concerning aspect is Chrome's ability to correlate identities across se
 The way you use keyboard shortcuts, your reading speed, your common typing errors - these patterns are as unique as a fingerprint. Combined with Chrome's hardware fingerprinting and network analysis, this creates a tracking system that's nearly impossible to evade through conventional means.
 
 # How GoogleGuard Overcomes Chrome's Block of Privacy Extensions
-The extension achieves ping blocking through a sophisticated multi-layered approach that outmaneuvers Chrome's restrictions on privacy extensions. The key innovation lies in a multi layer approach implementing novel techniques and attack vectors against established Chrome compponents like the DOM (exploiting the DOM to monitor for mutated attributes and clean them) and API, using legitimate pathways to subvert Chrome's built-in surveillance.
+The extension achieves ping blocking through a sophisticated multi-layered approach that outmaneuvers Chrome's restrictions on privacy extensions. The key innovation lies in a multi layer approach implementing novel techniques and attack vectors against established Chrome components like the DOM (exploiting the DOM to monitor for mutated attributes and clean them) and API, using legitimate pathways to subvert Chrome's built-in surveillance.
 
 ## Pre DOM Initialization 
 At the core of this approach is an aggressive early initialization strategy. The extension's content script is configured to inject at "document_start" in the manifest, ensuring it runs before the document begins parsing and before any DOM elements exist. This timing is crucial - it allows the extension to establish its protective measures before Google's tracking scripts can initialize or attach any listeners. The extension immediately begins overriding and poisoning key browser APIs that Google's tracking systems depend on, effectively corrupting the tracking environment before it can establish itself.
@@ -136,18 +136,6 @@ At the core of this approach is an aggressive early initialization strategy. The
 Chrome uses the Navigator API to collect detailed system information for fingerprinting. GoogleGuard employs a novel approach of dynamic property poisoning through JavaScript Proxy objects and getter function manipulation. Rather than simply blocking navigator.sendBeacon or access to these properties (which itself can create a unique fingerprint) - and would be detected and prevented by Chrome , GoogleGuard returns randomized but plausible values that change periodically, a sophisticated fake implementation. This replacement appears to function normally but always returns false, signaling to Google's code that the ping attempt failed. This is particularly clever because it works within Chrome's rules while completely undermining the tracking functionality. The false return value typically causes Google's code to abandon retry attempts, believing there's a legitimate network or configuration issue.
 
 ```javascript
-%%{init: {
-  'theme': 'base',
-  'themeVariables': {
-    'primaryColor': '#6495ED',
-    'primaryTextColor': '#fff',
-    'primaryBorderColor': '#5278c8',
-    'lineColor': '#5278c8',
-    'secondaryColor': '#73c6b6',
-    'tertiaryColor': '#f1948a',
-    'backgroundColor': '#000000'
-  }
-}}%%
 const navigatorProps = {
     hardwareConcurrency: { get: () => getRandomInt(1, 32) },
     deviceMemory: { get: () => getRandomFromArray([0.5, 1, 2, 4, 8, 16, 32]) },
