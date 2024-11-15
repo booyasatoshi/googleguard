@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="popup.css">
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <h1>GoogleGuard - Don't Be Evil</h1>
+                <div class="main-toggle">
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                    <span id="enabledStatus" class="toggle-label">Protection Active</span>
+                </div>
+            </header>
+            
+            <div class="section stats">
+                <h2>Protection Statistics</h2>
+                <div class="stat-grid">
+                    <div class="stat-item">
+                        <span class="stat-label">Requests Protected</span>
+                        <span id="requestCount" class="stat-value">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Tracking Attempts Blocked</span>
+                        <span id="trackingCount" class="stat-value">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Pings Blocked</span>
+                        <span id="pingCount" class="stat-value">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Data Points Poisoned</span>
+                        <span id="poisonedCount" class="stat-value">0</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section protection-config">
+                <h2>Protection Settings</h2>
+                <div class="settings-grid">
+                    <div class="setting-item">
+                        <label class="switch">
+                            <input type="checkbox" id="poisonTracking" checked>
+                            <span class="slider"></span>
+                        </label>
+                        <span class="setting-label">Poison Tracking Data</span>
+                    </div>
+                    <div class="setting-item">
+                        <label class="switch">
+                            <input type="checkbox" id="injectNoise" checked>
+                            <span class="slider"></span>
+                        </label>
+                        <span class="setting-label">Inject Behavioral Noise</span>
+                    </div>
+                    <div class="setting-item">
+                        <label class="switch">
+                            <input type="checkbox" id="sanitizeHeaders" checked>
+                            <span class="slider"></span>
+                        </label>
+                        <span class="setting-label">Sanitize Headers</span>
+                    </div>
+                    <div class="setting-item">
+                        <label class="switch">
+                            <input type="checkbox" id="randomizeIdentifiers" checked>
+                            <span class="slider"></span>
+                        </label>
+                        <span class="setting-label">Randomize Identifiers</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section advanced-options">
+                <h2>Advanced Options</h2>
+                <div class="advanced-grid">
+                    <button class="button danger">Reset Statistics</button>
+                    <button class="button">Export Report</button>
+                </div>
+            </div>
+            
+            <div id="statusMessage" class="status-message"></div>
+        </div>
+        
+        <div id="resetModal" class="modal">
+            <div class="modal-content">
+                <h2>Reset Statistics</h2>
+                <p>Are you sure you want to reset all protection statistics?</p>
+                <div class="modal-buttons">
+                    <button class="button danger">Reset</button>
+                    <button class="button">Cancel</button>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <span class="version"><a href="https://github.com/booyasatoshi/googleguard">Version 2.0</a> by Virgil Vaduva, 2024</span>
+            <div class="status">
+                <span class="status-dot active"></span>
+                <span class="status-text">Protected</span>
+            </div>
+        </footer>
+        
+        <script src="popup.js"></script>
+    </body>
+</html>
