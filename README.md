@@ -41,25 +41,22 @@ There are many Chrome extensions attempting to protect users privacy but most of
 %%{init: {
   'theme': 'base',
   'themeVariables': {
-    'primaryColor': '#6495ED',
+    'primaryColor': '#1a73e8',
     'primaryTextColor': '#fff',
-    'primaryBorderColor': '#5278c8',
-    'lineColor': '#5278c8',
-    'secondaryColor': '#73c6b6',
-    'tertiaryColor': '#f1948a',
+    'primaryBorderColor': '#185abc',
+    'lineColor': '#185abc',
     'backgroundColor': '#ffffff'
   }
 }}%%
 
 flowchart TB
-    classDef collection fill:#6495ED,stroke:#333,stroke-width:2px;
-    classDef processing fill:#A1C471,stroke:#333,stroke-width:2px;
-    classDef sharing fill:#F1948A,stroke:#333,stroke-width:2px;
-    classDef user fill:#D7BDE2,stroke:#333,stroke-width:2px;
-    classDef datatypes fill:#F8C471,stroke:#333,stroke-width:2px;
+    classDef collection fill:#4285f4,stroke:#333,stroke-width:2px,color:#ffffff;
+    classDef processing fill:#34a853,stroke:#333,stroke-width:2px,color:#ffffff;
+    classDef sharing fill:#ea4335,stroke:#333,stroke-width:2px,color:#ffffff;
+    classDef user fill:#fbbc04,stroke:#333,stroke-width:2px,color:#ffffff;
+    classDef datatypes fill:#9334e6,stroke:#333,stroke-width:2px,color:#ffffff;
 
     User[Chrome User]:::user
-    click User "Chrome actively tracks user identity across sessions, devices, and browsing modes (including incognito). It creates a persistent user profile that survives browser reinstalls and system changes."
 
     subgraph DC[Data Collection]
         direction TB
@@ -71,23 +68,12 @@ flowchart TB
         U[Usage Patterns]:::collection
     end
 
-    click H "Hardware fingerprinting collects: CPU core count & model, GPU details, RAM amount, screen resolution, available fonts, installed drivers, audio processing characteristics, battery status, and device sensors. This creates a unique device signature that's 99.24% accurate for identification."
-    click B "Behavior analysis tracks: Scroll patterns, mouse movements, hover time, reading speed, click patterns, tab switching frequency, window management, and content interaction patterns. ML algorithms analyze these to create behavioral fingerprints."
-    click N "Network/Location monitoring includes: IP addresses, DNS queries, VPN detection, connection patterns, GPS data, WiFi access points, and cellular towers. Chrome tracks precise location even when location services are disabled using IP and network signatures."
-    click F "Advanced fingerprinting uses: Canvas rendering patterns, WebGL fingerprints, audio processing signatures, CSS feature detection, and system color depth. These create additional unique identifiers that persist across sessions."
-    click K "Input analysis captures: Keystroke timing patterns, key press duration, typing errors, voice patterns, accent analysis, microphone signatures, and correction behaviors. This creates a biometric profile of the user."
-    click U "Usage pattern tracking includes: Active hours, browsing duration, tab count, extension usage, bookmark patterns, form fill patterns, and site interaction behaviors. This helps build the user's digital routine profile."
-
     subgraph PR[Processing]
         direction TB
         ML[ML Models]:::processing
         P[Profile Generation]:::processing
         I[Identity Correlation]:::processing
     end
-
-    click ML "Machine Learning systems process raw data through neural networks to identify patterns, predict behavior, and correlate identities. Uses advanced AI models for real-time analysis and profile updates."
-    click P "Profile generation combines all data points into a comprehensive digital dossier, including behavioral patterns, interests, social connections, and predicted future behaviors."
-    click I "Identity correlation uses ML to link profiles across devices, browsers, and sessions, even when using privacy tools. 94.7% accurate in identifying users across different devices."
 
     subgraph DS[Data Sharing]
         direction TB
@@ -96,20 +82,12 @@ flowchart TB
         C[Commercial]:::sharing
     end
 
-    click A "Advertising partners receive detailed profiles for targeted advertising, including behavioral patterns, interests, and predicted purchasing behavior."
-    click G "Government agencies can access user data through legal frameworks, including FISA courts and national security letters. Includes real-time surveillance capabilities."
-    click C "Commercial partners receive aggregated and individual user data for market research, product development, and user targeting."
-
     subgraph DT[Data Types]
         direction TB
         D1[Digital Dossier]:::datatypes
         D2[Behavior Patterns]:::datatypes
         D3[Predictive Models]:::datatypes
     end
-
-    click D1 "Complete digital profile including: browsing history, interests, social connections, political views, health concerns, financial status, and personal preferences."
-    click D2 "Detailed behavioral analysis showing: daily routines, attention patterns, emotional responses to content, decision-making patterns, and cognitive behaviors."
-    click D3 "Predictive models forecast: future interests, purchasing decisions, life changes, travel plans, and potential security/privacy risks."
 
     User --> DC
     DC --> PR
