@@ -20,7 +20,7 @@
 10. [License](#license)
 
 Before you read anything else, the first advice I would give you is, stop using Google Chrome.  Now. Download and use [Ungoogled Chromium](https://ungoogled-software.github.io/ungoogled-chromium-binaries/) or [Brave Browser](https://brave.com/download/). Brave does not implement all the countermeasures used in by this extension but it's still way better than Chrome.  
-at di
+
 But if you have to use Chrome, read on and install the extension.
 
 ## What this is
